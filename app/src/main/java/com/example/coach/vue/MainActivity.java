@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txtPoids, txtTaille, txtAge;
     private RadioButton rdHomme;
+
+    private RadioButton rdFemme;
     private TextView lblIMG;
     private ImageView imgSmiley;
     private Button btnCalc;
@@ -34,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
         txtTaille = (EditText) findViewById(R.id.txtTaille);
         txtAge = (EditText) findViewById(R.id.txtAge);
         rdHomme = (RadioButton) findViewById(R.id.rdHomme);
+        rdFemme = (RadioButton) findViewById(R.id.rdFemme);
         lblIMG = (TextView) findViewById(R.id.lblIMG);
         imgSmiley = (ImageView) findViewById(R.id.imgSmiley);
         btnCalc = (Button) findViewById(R.id.btnCalc);
 
-        controle = Controle.getInstance();
+        controle = Controle.getInstance(this);
 
         ecouteCalcul();
+        recupProfil();
     }
 
     private void ecouteCalcul(){
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void affichResult(Integer poids, Integer taille, Integer age, Integer sexe){
-        controle.creerProfil(poids, taille, age, sexe);
+        controle.creerProfil(poids, taille, age, sexe, this);
         String message = controle.getMessage();
         float img = controle.getImg();
         switch(message){
@@ -85,6 +89,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         lblIMG.setText(String.format("%.01f", img)+" : IMG "+message);
+    }
+
+    private void recupProfil(){
+        if(controle.getTaille()!= null){
+            txtPoids.setText(controle.getPoids().toString());
+            txtTaille.setText(controle.getTaille().toString());
+            txtAge.setText(controle.getAge().toString());
+            if(controle.getSexe() == 0){
+                rdFemme.setChecked(true);
+            }else{
+                rdHomme.setChecked(true);
+            }
+            btnCalc.performClick();
+        }
     }
 
     @Override
