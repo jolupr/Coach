@@ -113,6 +113,7 @@ public class CalculActivity extends AppCompatActivity {
             } else {
                 rdHomme.setChecked(true);
             }
+
         }
     }
 
