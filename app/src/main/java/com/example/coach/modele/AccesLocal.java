@@ -44,7 +44,6 @@ public class AccesLocal {
         values.put("dateMesure", profil.getDateMesure().toString());
         bd.insert("profil", null, values);
         bd.close();
-
     }
 
     public Profil recupDernier(){

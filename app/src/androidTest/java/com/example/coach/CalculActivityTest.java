@@ -2,7 +2,7 @@ package com.example.coach;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
-import com.example.coach.vue.MainActivity;
+import com.example.coach.vue.CalculActivity;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -17,9 +17,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 
-public class MainActivityTest {
+public class CalculActivityTest {
     @Rule
-    public ActivityScenarioRule<MainActivity> rule = new ActivityScenarioRule<MainActivity>(MainActivity.class);
+    public ActivityScenarioRule<CalculActivity> rule = new ActivityScenarioRule<CalculActivity>(CalculActivity.class);
 
     @Test
     public void scenario(){

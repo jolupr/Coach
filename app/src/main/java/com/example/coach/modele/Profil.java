@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Profil implements Serializable {
+public class Profil implements Serializable, Comparable {
 
     // constantes
     private static final Integer minFemme = 15; // maigre si en dessous
@@ -93,5 +93,10 @@ public class Profil implements Serializable {
             Log.d("erreur", "************* classe Profil, méthode convertToJSONObject, erreur de conversion");
         }
         return jsonProfil;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return dateMesure.compareTo(((Profil)o).getDateMesure());
     }
 }

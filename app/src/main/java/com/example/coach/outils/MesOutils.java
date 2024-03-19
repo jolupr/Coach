@@ -41,4 +41,8 @@ public abstract class MesOutils {
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return date.format(uneDate);
     }
+
+    public static String format2Decimal (Float uneValeur){
+        return String.format("%.01f", uneValeur);
+    }
 }
